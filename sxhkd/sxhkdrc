@@ -1,0 +1,156 @@
+#
+# wm independent hotkeys
+#
+
+# terminal emulator
+# 启动一个终端
+super + Return
+	alacritty
+
+# program launcher
+# 启动一个Launcher,在快捷键之前加@,会在按键放开后启动
+super + @space
+    rofi -show drun -config ~/.config/rofi/themes/default.rasi
+super + d
+    rofi -show run -config ~/.config/rofi/themes/default.rasi
+
+# make sxhkd reload its configuration files:
+# 重新载入sxhkd配置文件
+super + Escape
+	pkill -USR1 -x sxhkd
+
+
+###############################
+# bspwm快捷键配置
+#############################
+
+# quit/restart bspwm
+# 退出/重启 bspwm
+super + shift + {e,r}
+	bspc {quit,wm -r}
+
+# close and kill
+# 关闭/杀死当前窗口
+super + {_,shift + }q
+	bspc node -{c,k}
+
+# alternate between the tiled and monocle layout
+#  切换平铺和单窗口模式
+super + m
+	bspc desktop -l next
+
+# send the newest marked node to the newest preselected node
+# 将标记窗口送到预选节点
+super + y
+	bspc node newest.marked.local -n newest.!automatic.local
+
+# swap the current node and the biggest window
+# 交换当前窗口到最大窗口
+super + g
+	bspc node -s biggest.window
+
+#
+# state/flags
+#
+
+# set the window state
+# 切换平铺,伪装平铺,浮动和全屏模式
+super + {t,shift + t,s,f}
+	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+
+# set the node flags
+# 设置{ 标记,锁定,固定,私人 }模式
+super + ctrl + {m,x,y,z}
+	bspc node -g {marked,locked,sticky,private}
+
+#
+# focus/swap
+#
+
+# focus the node in the given direction
+# 切换/移动窗口焦点
+super + {_,shift + }{h,j,k,l}
+	bspc node -{f,s} {west,south,north,east}
+
+# focus the node for the given path jump
+# 使用二叉树切换{父,兄弟,第一,第二}焦点
+# comma :,  period: .
+super + {p,b,comma,period}
+	bspc node -f @{parent,brother,first,second}
+
+# focus the next/previous window in the current desktop
+# 切换上/下一个窗口
+#
+#super + {_,shift + }c
+super + ctrl + {j,k}
+#super + {_,shift + }TAB
+	bspc node -f {next,prev}.local.!hidden.window
+
+# focus the next/previous desktop in the current monitor
+# 切换上/下屏幕
+#super + bracket{left,right} #大括号
+super + ctrl + {h,l}
+	bspc desktop -f {prev,next}.local
+
+# focus the last node/desktop
+# 切换到最后一个使用焦点/桌面
+super + {grave,Tab}
+	bspc {node,desktop} -f last
+
+# focus the older or newer node in the focus history
+super + {o,i}
+	bspc wm -h off; \
+	bspc node {older,newer} -f; \
+	bspc wm -h on
+
+# focus or send to the given desktop
+# 切换/发送到指定编号桌面
+super + {_,shift + }{1-9,0}
+	bspc {desktop -f,node -d} '^{1-9,10}'
+
+#
+# preselect
+# 预选
+#
+
+# preselect the direction
+# 预选窗口
+#super + ctrl + {h,j,k,l}
+#	bspc node -p {west,south,north,east}
+super +shift + ctrl + {h,j,k,l}
+	bspc node -p {west,south,north,east}
+
+# preselect the ratio
+# 预选窗口大小
+super + ctrl + {1-9}
+	bspc node -o 0.{1-9}
+
+# cancel the preselection for the focused node
+# 取消预选
+super + ctrl + space
+	bspc node -p cancel
+
+# cancel the preselection for the focused desktop
+# 取消所有预选
+super + ctrl + shift + space
+	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
+
+#
+# move/resize
+# 移动/大小
+#
+
+# expand a window by moving one of its side outward
+# 扩大窗口
+super + alt + {h,j,k,l}
+	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+
+# contract a window by moving one of its side inward
+# 缩小窗口
+super + alt + shift + {h,j,k,l}
+	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+
+# move a floating window
+# 移动一个浮动窗口
+super + {Left,Down,Up,Right}
+	bspc node -v {-20 0,0 20,0 -20,20 0}

@@ -1,0 +1,65 @@
+#! /bin/sh
+
+pgrep -x sxhkd > /dev/null || sxhkd &
+
+#polybar状态栏
+$HOME/polybar-collection/launch.sh
+#$HOME/.config/polybar/launch.sh --docky
+
+
+#Fcitx 输入法
+fcitx5&
+
+# 设置主屏幕以及副屏幕旋转
+xrandr --output DP-3 --primary --mode "1920x1080"
+xrandr --output HDMI-0 --left-of DP-3 --mode "1360x768"
+#xrandr --output DP-3 --primary --mode "1920x1080"
+
+#设置多屏幕
+bspc monitor DP-3 -d 1 2 3 4 5 6 
+#bspc monitor HDMI-0 -d 7 8 
+
+#设置鼠标速度
+xinput --set-prop "pointer:Razer Razer Basilisk Essential" "libinput Accel Speed" -0.8
+xinput --set-prop "Madcatz Mad Catz R.A.T.3 Mouse" "libinput Accel Speed" -0.5
+
+#设置屏幕壁纸
+feh --randomize --bg-scale ~/.config/wallpapers/*
+
+#窗口透明
+#compton -b&
+#picom --experimental-backends --config ~/scripts/config/picom.conf
+picom --experimental-backends
+
+#网络组件
+nm-applet&
+
+#声音组件
+#volumeicon&
+
+#蓝牙组件
+blueman-applet&
+
+#不显示X型光标
+xsetroot -cursor_name left_ptr &
+
+##################################
+# bspwm设置
+############################
+
+#设置窗口边框及边距
+bspc config border_width        6
+bspc config window_gap          6
+
+bspc config split_ratio          0.52
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+
+bspc rule -a Gimp desktop='^8' state=floating follow=on
+bspc rule -a Chromium desktop='^2'
+
+
+#颜色设置
+bspc config normal_border_color     \#88C0D0
+bspc config active_border_color     \#285577
+bspc config focused_border_color    \#0099ff

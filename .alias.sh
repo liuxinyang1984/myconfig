@@ -1,0 +1,5 @@
+alias ra='ranger'
+alias ls='ls --color'
+alias ll='ls -l'
+alias la='ls -a'
+alias gine='WINEPROFIX=~/.gine wine' 

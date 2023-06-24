@@ -1,0 +1,15 @@
+[user]
+	email = liuxinyang1984@gmail.com
+	name = liuxinyang1984
+[init]
+	defaultBranch = main
+[core]
+	compression = -1
+[http]
+	postBuffer = 546308096
+[https]
+	postBuffer = 2097152000
+[alias]
+    tree2 = log --pretty=oneline --graph --decorate --abbrev-commit --color
+[alias]
+    tree = log --graph --date-order -C -M --pretty=format:"<%h> %ad [%an] %Cgreen%d%Creset %s" --date=short

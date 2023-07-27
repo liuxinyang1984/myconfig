@@ -1,42 +1,46 @@
 #! /bin/sh
+#alacritty &
+#重启会.Xmodmap设置总是失效,手动载入一下
+xmodmap ~/.Xmodmap > /dev/null
 
 pgrep -x sxhkd > /dev/null || sxhkd &
 
-#polybar状态栏
-$HOME/polybar-collection/launch.sh
-#$HOME/.config/polybar/launch.sh --docky
-
-
 #Fcitx 输入法
-fcitx5&
+fcitx5 &
 
 # 设置主屏幕以及副屏幕旋转
-xrandr --output DP-3 --primary --mode "1920x1080"
-xrandr --output HDMI-0 --left-of DP-3 --mode "1360x768"
+xrandr --output DisplayPort-0 --primary --mode "1920x1080" --dpi 144
+xrandr --output DisplayPort-1 --mode "1600x1200" --rotate left --dpi 144
+#xrandr --output DisplayPort-1 --mode "1600x1200" 
 #xrandr --output DP-3 --primary --mode "1920x1080"
 
 #设置多屏幕
-bspc monitor DisplayPort-0 -d 1 2 3 4 
-bspc monitor DisplayPort-1 -d 5 6 7 8 
+bspc monitor DisplayPort-0 -d 1 2 3 4 5 
+bspc monitor DisplayPort-1 -d 6 7 8 9 0 
 #bspc monitor HDMI-0 -d 7 8 
 
 #设置鼠标速度
-xinput --set-prop "pointer:Razer Razer Basilisk Essential" "libinput Accel Speed" -0.8
-xinput --set-prop "Madcatz Mad Catz R.A.T.3 Mouse" "libinput Accel Speed" -0.5
+#xinput --set-prop "pointer:Razer Razer Basilisk Essential" "libinput Accel Speed" -0.8 &
+#xinput --set-prop "Madcatz Mad Catz R.A.T.3 Mouse" "libinput Accel Speed" -0.5
 
 #设置屏幕壁纸
-feh --randomize --bg-scale ~/.config/wallpapers/*
+#feh --randomize --bg-scale ~/.config/wallpapers/*
+feh --randomize --bg-fill ~/.config/wallpapers/* 
 
 #窗口透明
 #compton -b&
 #picom --experimental-backends --config ~/scripts/config/picom.conf
-picom --experimental-backends
+picom --experimental-backends -b &
+
+#polybar状态栏
+#$HOME/polybar-collection/launch.sh &
+$HOME/.config/polybar/launch.sh --colorblocks
 
 #通讯组件中间层
 snixembed &
-#网络组件
 
-iwgtk -i
+#网络组件
+iwgtk -i &
 
 #声音组件
 #volumeicon&
@@ -46,6 +50,7 @@ blueman-applet&
 
 #不显示X型光标
 xsetroot -cursor_name left_ptr &
+
 
 ##################################
 # bspwm设置
@@ -60,7 +65,8 @@ bspc config borderless_monocle   true
 bspc config gapless_monocle      true
 
 bspc rule -a Gimp desktop='^8' state=floating follow=on
-bspc rule -a Chromium desktop='^2'
+bspc rule -a wechat.exe desktop='^10' state=floating follow=on
+bspc rule -a wxwork.exe desktop='^10' state=tiled follow=on
 
 
 #颜色设置

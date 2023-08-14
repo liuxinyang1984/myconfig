@@ -1,5 +1,5 @@
 alias ra='ranger'
 alias ls='ls --color'
 alias ll='ls -l'
-alias la='ls -a'
+alias la='ls -al'
 alias scrot='scrot ~/Screenshots/%b%d::%H%M%S.png'

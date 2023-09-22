@@ -14,7 +14,6 @@
     {
       "tag": "socks",
       "port": 1080,
-      "listen": "127.0.0.1",
       "protocol": "socks",
       "sniffing": {
         "enabled": true,
@@ -66,11 +65,11 @@
       "settings": {
         "vnext": [
           {
-            "address": "139.180.205.33",
-            "port": 4419,
+            "address": "64.176.50.95",
+            "port": 44419,
             "users": [
               {
-                "id": "6ef0d78f-3d4a-4368-8359-e7ce79d910f0",
+                "id": "e8927894-c603-482f-99a5-03df621f8d5a",
                 "alterId": 0,
                 "email": "t@t.tt",
                 "security": "auto"
@@ -79,7 +78,7 @@
           }
         ]
       },
-      "streamSettings": {
+          "streamSettings": {
         "network": "kcp",
         "kcpSettings": {
           "mtu": 1350,
@@ -91,29 +90,13 @@
           "writeBufferSize": 2,
           "header": {
             "type": "utp"
-          }
-        }
-      },
-      "mux": {
-        "enabled": false,
-        "concurrency": -1
-      }
-    },
-    {
-      "tag": "direct",
-      "protocol": "freedom",
-      "settings": {}
-    },
-    {
-      "tag": "block",
-      "protocol": "blackhole",
-      "settings": {
-        "response": {
-          "type": "http"
+          },
+          "seed": "e8927894-c603-482f-99a5-03df621f8d5a"
         }
       }
     }
   ],
+
   "stats": {},
   "api": {
     "tag": "api",
@@ -135,7 +118,7 @@
       {
         "type": "field",
         "port": "0-65535",
-        "outboundTag": "proxy",
+        "outboundTag": "VMess-mKCP-24419.json",
         "enabled": true
       }
     ]

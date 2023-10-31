@@ -1,7 +1,5 @@
 #! /bin/sh
 #alacritty &
-#重启会.Xmodmap设置总是失效,手动载入一下
-#xmodmap ~/.Xmodmap > /dev/null
 
 pgrep -x sxhkd > /dev/null || sxhkd &
 
@@ -9,15 +7,15 @@ pgrep -x sxhkd > /dev/null || sxhkd &
 fcitx5 -D&
 
 # 设置主屏幕以及副屏幕旋转
-xrandr --output DP-1 --primary --mode "1920x1080" --dpi 96
+xrandr --output DP-1 --primary --mode "1920x1080" --dpi 96 --rotate
 #xrandr --output HDMI-0 --mode "1440x900"
 #xrandr --output HDMI-0 --mode "1440x900" --rotate left --dpi 96
 #xrandr --output DisplayPort-1 --mode "1600x1200" 
 #xrandr --output DP-3 --primary --mode "1920x1080"
 
 #设置多屏幕
-bspc monitor DP-1 -d 6 7 8 9 0 
-bspc monitor HDMI-0 -d 1 2 3 4 5 
+bspc monitor DP-1 -d 6 7 8 9
+bspc monitor HDMI-0 -d 1 2 3 
 #bspc monitor HDMI-0 -d 7 8 
 
 #设置鼠标速度
@@ -62,12 +60,16 @@ bspc config border_width        6
 bspc config window_gap          6
 
 bspc config split_ratio          0.52
-bspc config borderless_monocle   true
+# bspc config borderless_monocle   true
+bspc config borderless_monocle   false
 bspc config gapless_monocle      true
 
 bspc rule -a Gimp desktop='^8' state=floating follow=on
+# bspc rule -a wechat.exe desktop='^10' state=floating follow=on
+# bspc rule -a wechat.exe desktop='^10' state=tiled follow=on
+# bspc rule -a wxwork.exe desktop='^10' state=tiled follow=on
 bspc rule -a wechat.exe desktop='^10' state=floating follow=on
-bspc rule -a wxwork.exe desktop='^10' state=tiled follow=on
+bspc rule -a wxwork.exe desktop='^10' state=floating follow=on
 
 
 #颜色设置

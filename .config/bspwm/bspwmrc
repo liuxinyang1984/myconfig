@@ -7,14 +7,14 @@ pgrep -x sxhkd > /dev/null || sxhkd &
 fcitx5 &
 
 # 设置主屏幕以及副屏幕旋转
-xrandr --output DisplayPort-1 --primary --mode "1920x1080" --dpi 96
-xrandr --output DisplayPort-2 --mode "1600x1200" --rotate left --dpi 96
+xrandr --output DisplayPort-0 --primary --mode "1920x1080" --dpi 96
+xrandr --output DisplayPort-1 --mode "1600x1200" --rate 59.0 --rotate left --dpi 96 --left-of DisplayPort-0
 #xrandr --output DisplayPort-1 --mode "1600x1200" 
 #xrandr --output DP-3 --primary --mode "1920x1080"
 
 #设置多屏幕
-bspc monitor DisplayPort-1 -d 1 2 3 4 5 
-bspc monitor DisplayPort-2 -d 6 7 8 9 0 
+bspc monitor DisplayPort-0 -d 1 2 3 4 5 
+bspc monitor DisplayPort-1 -d 6 7 8 9 0 
 #bspc monitor HDMI-0 -d 7 8 
 
 #设置鼠标速度

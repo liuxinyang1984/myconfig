@@ -106,6 +106,11 @@
       "on-scroll-down": "shift_down"
     }
   },
+  "hyprland/workspaces":{
+    "persistent-workspaces":true,
+    "show-special":true
+
+  },
   "wlr/workspaces": {
     "format": "{name}",
     //"format": "{name}: {icon}",
@@ -328,4 +333,5 @@
       "on-click-right": "mode"
     }
   }
+
 }

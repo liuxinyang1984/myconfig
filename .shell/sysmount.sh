@@ -11,5 +11,5 @@ case $1 in
         targer="home-yang-Games"
         ;;
 esac
-sudo sudo systemctl start $targer.mount
+sudo systemctl start $targer.mount
 

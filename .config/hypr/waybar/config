@@ -24,11 +24,13 @@
 "modules-center": [
   "custom/menu",
   "idle_inhibitor",
-	"clock",
-	"wlr/workspaces",
+  "clock",
+  //"wlr/workspaces",
+  "hyprland/workspaces",
   "custom/cycle_wall",
-	"custom/light_dark",
-	],
+  "custom/light_dark",
+  "hyprland/window"
+  ],
 
 "modules-right": [
 	//"hyprland/window",

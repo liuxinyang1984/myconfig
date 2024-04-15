@@ -26,3 +26,6 @@ source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 source ~/.profile
+
+# Created by `pipx` on 2023-12-29 02:14:59
+export PATH="$PATH:/home/yang/.local/bin"

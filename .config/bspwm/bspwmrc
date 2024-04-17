@@ -14,8 +14,8 @@ xrandr --output DP-1 --primary --mode "1920x1080" --dpi 96 --rotate
 #xrandr --output DP-3 --primary --mode "1920x1080"
 
 #设置多屏幕
-bspc monitor DP-1 -d 6 7 8 9
-bspc monitor HDMI-0 -d 1 2 3 
+bspc monitor HDMI-0 -d 1 2 3 4 5
+bspc monitor DP-1   -d 6 7 8 9 0
 #bspc monitor HDMI-0 -d 7 8 
 
 #设置鼠标速度

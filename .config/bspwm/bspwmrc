@@ -9,7 +9,8 @@ fcitx5 -D&
 # 设置主屏幕以及副屏幕旋转
 xrandr --output DP-1 --primary --mode "1920x1080" --dpi 96 --rotate
 #xrandr --output HDMI-0 --mode "1440x900"
-#xrandr --output HDMI-0 --mode "1440x900" --rotate left --dpi 96
+#xrandr --output HDMI-0 --mode "1440x900" --rotate left --dpi 96 --left-of DP-1
+xrandr --output HDMI-0 --mode "1440x900" --dpi 96 --left-of DP-1
 #xrandr --output DisplayPort-1 --mode "1600x1200" 
 #xrandr --output DP-3 --primary --mode "1920x1080"
 

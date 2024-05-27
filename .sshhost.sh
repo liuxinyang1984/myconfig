@@ -9,3 +9,6 @@ alias sshusliu="ssh root@149.28.208.62"
 alias sshwtyxb="ssh prod_xxx@110.42.231.246"
 alias sshtyy="ssh root@182.40.34.27"
 alias sshtb='ssh root@47.103.148.230'
+alias sshhsy='ssh root@101.126.68.220'
+alias sshkl='ssh prod_xxx@82.157.186.83'
+alias sshwutong 'ssh yang@182.40.34.27 -p 2202'

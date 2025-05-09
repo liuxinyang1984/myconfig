@@ -17,14 +17,14 @@
 	"memory",
 	"temperature",
 	"disk",
-	"custom/updater",
+	//"custom/updater",
 	"custom/weather",
 	],
 
 "modules-center": [
   "custom/menu",
   "idle_inhibitor",
-  "clock",
+  //"clock",
   //"wlr/workspaces",
   "hyprland/workspaces",
   "custom/cycle_wall",
@@ -33,6 +33,7 @@
   ],
 
 "modules-right": [
+    "clock",
 	//"hyprland/window",
 	"tray",
 	"backlight",

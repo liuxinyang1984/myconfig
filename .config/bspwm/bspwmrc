@@ -9,15 +9,17 @@ pgrep -x sxhkd > /dev/null || sxhkd &
 fcitx5 &
 
 # 设置主屏幕以及副屏幕旋转
-xrandr --output DisplayPort-0 --primary --mode "1920x1080" --dpi 144
-xrandr --output DisplayPort-1 --mode "1600x1200" --rotate left --dpi 144
-#xrandr --output DisplayPort-1 --mode "1600x1200" 
+#
+#xrandr --output None-1 --primary --mode "1600x900" --dpi 144
+xrandr --output DP-0 --primary --mode "1920x1080"
+#xrandr --output DP-0 --mode "1600x900" --left-of DVI-D-0 --rotate left
+xrandr --output DVI-D-0 --mode "1600x900" --left-of DP-0
 #xrandr --output DP-3 --primary --mode "1920x1080"
 
 #设置多屏幕
-bspc monitor DisplayPort-0 -d 1 2 3 4 5 
-bspc monitor DisplayPort-1 -d 6 7 8 9 0 
-#bspc monitor HDMI-0 -d 7 8 
+bspc monitor DVI-D-0 -d 1 2 3 4 5 
+bspc monitor DP-0 -d 6 7 8 9 0
+bspc monitor None-1 -d 1 2 3 4 5 
 
 #设置鼠标速度
 #xinput --set-prop "pointer:Razer Razer Basilisk Essential" "libinput Accel Speed" -0.8 &
@@ -25,7 +27,7 @@ bspc monitor DisplayPort-1 -d 6 7 8 9 0
 
 #设置屏幕壁纸
 #feh --randomize --bg-scale ~/.config/wallpapers/*
-feh --randomize --bg-fill ~/.config/wallpapers/* 
+feh --randomize --bg-fill ~/.local/share/wallpapers/* 
 
 #窗口透明
 #compton -b&
@@ -33,7 +35,7 @@ feh --randomize --bg-fill ~/.config/wallpapers/*
 picom --experimental-backends -b &
 
 #polybar状态栏
-#$HOME/polybar-collection/launch.sh &
+#$HOME/polybar-collection/launch.sh --colorblocks
 $HOME/.config/polybar/launch.sh --colorblocks
 
 #通讯组件中间层

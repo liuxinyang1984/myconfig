@@ -21,11 +21,21 @@ compinit
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+source ~/.sshhost.sh
+source ~/.alias.sh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-source ~/.profile
 
 # Created by `pipx` on 2023-12-29 02:14:59
 export PATH="$PATH:/home/yang/.local/bin"
+export PATH="$PATH:$HOME/.config/composer/vendor/bin"
+
+# pnpm
+export PNPM_HOME="/home/yang/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end

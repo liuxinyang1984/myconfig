@@ -1,4 +1,5 @@
-alias ra='ranger'
+# alias ra='ranger'
+alias ra='yazi'
 alias ls='ls --color'
 alias ll='ls -lh'
 alias la='ls -alh'

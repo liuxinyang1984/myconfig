@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Windows
+# Exec=xfreerdp /u:cookie /p:xmlxzl /v:192.168.101.5 /dynamic-resolution
+Exec=bash -c "wakeonlan 64:00:6A:12:CC:88 && sleep 10 && xfreerdp /u:cookie /p:xmlxzl /v:192.168.101.5 /dynamic-resolution"
+
+Icon=windows
+Keywords=Windows;Win;windows;win;
+Terminal=false
+Categories=Network;RemoteAccess;
+Comment=Connect to Windows via FreeRDP
+

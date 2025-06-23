@@ -12,10 +12,12 @@ super + Return
     #rofi -show drun -theme spotlight -show-icons -icon-theme 'Flat-Remix-Green-Light'
     #rofi -show drun -show-icons -icon-theme 'Flat-Remix-Green-Light' -theme solarized
 super + @space
-    rofi -show drun -show-icons -icon-theme 'Flat-Remix-Green-Light' -theme solarized
+    rofi -show drun -show-icons -icon-theme 'Flat-Remix-Green-Light' -theme rounded-nord-dark
+    #rofi -show drun -show-icons -icon-theme 'Flat-Remix-Green-Light' -theme solarized
+    #rofi -show drun -show-icons -icon-theme 'Flat-Remix-Green-Light' -theme rounded-nord-dark
 super + d
-    rofi -show run --theme spotlight
-
+    rofi -show run -theme rounded-nord-dark
+    #rofi -show run --theme spotlight
 # make sxhkd reload its configuration files:
 # 重新载入sxhkd配置文件
 super + Escape
@@ -62,9 +64,13 @@ super + {t,shift + t,s,f}
 
 # set the node flags
 # 设置{ 标记,锁定,固定,私人 }模式
-super + ctrl + {m,x,y,z}
-	bspc node -g {marked,locked,sticky,private}
+super + ctrl + {m,x,y,z,alt+h}
+	bspc node -g {marked,locked,sticky,private,hidden}
 
+super+ctrl+alt+shift+h
+    bspc node -f any.hidden.window
+super + ctrl + m
+    bspc desktop -l prev
 #
 # focus/swap
 #

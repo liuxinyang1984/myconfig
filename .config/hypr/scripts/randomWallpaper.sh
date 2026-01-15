@@ -12,7 +12,7 @@ change_swaybg(){
 
 change_swww(){
   pkill swaybg
-  swww query || swww init
+  swww query || swww-daemon
   swww img ${RANDOMPICS} --transition-fps 30 --transition-type any --transition-duration 3
 }
 

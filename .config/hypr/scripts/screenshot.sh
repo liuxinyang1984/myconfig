@@ -3,7 +3,14 @@
 iDIR="$HOME/.config/hypr/mako/icons"
 
 time=$(date +%Y-%m-%d-%H-%M-%S)
-dir="$(xdg-user-dir)/Pictures/Screenshots"
+# get screenshot dir safely
+if command -v xdg-user-dir >/dev/null 2>&1; then
+	base_dir="$(xdg-user-dir PICTURES)"
+else
+	base_dir="$HOME/Pictures"
+fi
+
+dir="$base_dir/Screenshots"
 file="Screenshot_${time}_${RANDOM}.png"
 
 # notify and view screenshot
